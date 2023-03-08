@@ -35,7 +35,7 @@ const TodoList = () => {
           Todo List
         </Text>
         {
-          // Render the list of todo items
+          // ✅ Render the list of todo items
           hardcodedTodoList.map((item) => (
             <Flex
               key={item.id}
