@@ -10,6 +10,10 @@ const delay = 500;
 
 type PathParams = { id: string };
 
+/**
+ * Using MSW for API Mocking.
+ * @link https://mswjs.io/
+ */
 export const handlers = [
   rest.get<never, never, TodoListModel>("/api/todos", async (req, res, ctx) => {
     return res(ctx.status(200), ctx.delay(delay), ctx.json(todosDb.list()));

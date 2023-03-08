@@ -10,6 +10,7 @@ export const useDeleteTodo = () => {
 
   return useMutation({
     mutationFn: async ({ id }: Params) => todosApi.delete(id),
+
     onSuccess: () => {
       /**
        * Refetch the todos

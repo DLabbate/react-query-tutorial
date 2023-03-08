@@ -6,6 +6,7 @@ import {
   StackDivider,
   VStack,
   Button,
+  useToast,
 } from "@chakra-ui/react";
 import { CloseIcon } from "@chakra-ui/icons";
 import { useTodosQuery } from "../hooks/useTodosQuery";
@@ -13,6 +14,7 @@ import { useDeleteTodoOptimistic } from "../hooks/useDeleteTodoOptimistic";
 import { useUpdateTodoOptimistic } from "../hooks/useUpdateTodoOptimistic";
 
 const TodoList = () => {
+  const toast = useToast();
   const { status, data } = useTodosQuery();
   const updateTodoMutationOptimistic = useUpdateTodoOptimistic();
   const deleteTodoMutationOptimistic = useDeleteTodoOptimistic();
@@ -56,9 +58,23 @@ const TodoList = () => {
                 isChecked={item.completed}
                 colorScheme="brand"
                 onChange={() => {
-                  updateTodoMutationOptimistic.mutate({
+                  // Toggle the `completed` boolean
+                  const mutationParms = {
                     ...item,
                     completed: !item.completed,
+                  };
+
+                  updateTodoMutationOptimistic.mutate(mutationParms, {
+                    // We can also pass additional callbacks to the mutation!
+                    // @link https://tanstack.com/query/latest/docs/react/guides/mutations#mutation-side-effects
+                    onError: () =>
+                      toast({
+                        title: "Failed to Update Todo Item",
+                        status: "error",
+                        duration: 5000,
+                        isClosable: true,
+                        position: "bottom-right",
+                      }),
                   });
                 }}
               />
@@ -75,7 +91,20 @@ const TodoList = () => {
                 colorScheme="brand"
                 variant="ghost"
                 onClick={() => {
-                  deleteTodoMutationOptimistic.mutate({ id: item.id });
+                  const mutationParams = { id: item.id };
+
+                  deleteTodoMutationOptimistic.mutate(mutationParams, {
+                    // We can also pass additional callbacks to the mutation!
+                    // @link https://tanstack.com/query/latest/docs/react/guides/mutations#mutation-side-effects
+                    onError: () =>
+                      toast({
+                        title: "Failed to Delete Todo Item",
+                        status: "error",
+                        duration: 5000,
+                        isClosable: true,
+                        position: "bottom-right",
+                      }),
+                  });
                 }}
               >
                 <CloseIcon boxSize={2} />

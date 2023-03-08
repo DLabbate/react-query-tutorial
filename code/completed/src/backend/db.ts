@@ -13,8 +13,7 @@ const hardcodedTodoList: TodoListModel = [
   { id: "4", completed: true, description: "Like the video!" },
 ];
 
-// Key used for local storage
-const key = "todos-react-query";
+const localStorageKey = "todos-react-query";
 
 interface Database {
   list(): TodoListModel;
@@ -26,13 +25,14 @@ interface Database {
 
 /**
  * Helper methods for performing CRUD operations in local storage.
+ * Simulates using a real database.
  */
 const todosDb: Database = {
   /**
    * Retrieves the entire list of todo items.
    */
   list() {
-    const results = window.localStorage.getItem(key);
+    const results = window.localStorage.getItem(localStorageKey);
 
     if (results) return JSON.parse(results) as TodoListModel;
     else return [];
@@ -51,7 +51,10 @@ const todosDb: Database = {
       description,
     };
 
-    window.localStorage.setItem(key, JSON.stringify([...results, newTodo]));
+    window.localStorage.setItem(
+      localStorageKey,
+      JSON.stringify([...results, newTodo])
+    );
 
     return newTodo;
   },
@@ -63,11 +66,11 @@ const todosDb: Database = {
     const results = this.list();
 
     const index = results.findIndex((item) => item.id === updatedTodo.id);
-    if (index !== -1) {
+    if (index >= 0) {
       results[index] = updatedTodo;
     }
 
-    window.localStorage.setItem(key, JSON.stringify(results));
+    window.localStorage.setItem(localStorageKey, JSON.stringify(results));
 
     return updatedTodo;
   },
@@ -79,19 +82,22 @@ const todosDb: Database = {
     const results = this.list();
 
     window.localStorage.setItem(
-      key,
+      localStorageKey,
       JSON.stringify(results.filter((item) => item.id !== id))
     );
   },
 
   /**
-   * Puts default values in the database, if no values exist.
+   * Seeds default values in the database, if no values exist.
    */
   seed() {
     const results = this.list();
 
     if (results.length === 0)
-      window.localStorage.setItem(key, JSON.stringify(hardcodedTodoList));
+      window.localStorage.setItem(
+        localStorageKey,
+        JSON.stringify(hardcodedTodoList)
+      );
   },
 } as const;
 

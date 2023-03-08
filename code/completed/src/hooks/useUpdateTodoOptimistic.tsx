@@ -2,6 +2,11 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import todosApi from "../api";
 import { TodoItemModel, TodoListModel } from "../api/models";
 
+/**
+ * An optimistic update allows us to update the UI instantly without waiting for feedback from the server.
+ * @link https://tanstack.com/query/latest/docs/react/guides/optimistic-updates
+ * @link https://tanstack.com/query/latest/docs/react/examples/react/optimistic-updates-typescript
+ */
 export const useUpdateTodoOptimistic = () => {
   const queryClient = useQueryClient();
 

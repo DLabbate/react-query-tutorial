@@ -37,7 +37,7 @@ const InputForm = () => {
                 toast({
                   title: "New Todo Item Added",
                   status: "success",
-                  duration: 9000,
+                  duration: 5000,
                   isClosable: true,
                   position: "bottom-right",
                 });
