@@ -1,58 +1,16 @@
 # React Query Tutorial
 
-This tutorial will cover [React Query](), a data fetching library you must try out!
+This tutorial will cover [React Query](https://tanstack.com/query/latest/docs/react/overview), a data fetching library you must try out!
 
 We'll cover the following topics
 
 - Queries
 - Mutations
-- Query Invalidations
+- Query Invalidation
 - Optimistic Updates
+- Devtools
 
-_Consider that we have the following REST API_
+## 🔗 References
 
-## List TODOs
-
-### Endpoint
-
-`GET /api/todos`
-
-### Response Body
-
-```json
-{
-  "id": "1234567",
-  "success": true,
-  "description": "Subscribe to Dom the Engineer!"
-}
-```
-
-## Create TODO
-
-### Endpoint
-
-`POST /api/todos`
-
-### Response Body
-
-If the TODO was created successfully, the server will return a `201 Created` (with the new todo item).
-
-## Update TODO
-
-### Endpoint
-
-`PUT /api/todos/{id}`
-
-### Response Body
-
-If the TODO was updated successfully, the server will return a `200 Success` (with the updated todo item).
-
-## Delete TODO
-
-### Endpoint
-
-`DELETE /api/todos/{id}`
-
-### Response Body
-
-If the TODO was deleted successfully, the server will return a `204 No Content`.
+- [React Query Official Documentation](https://tanstack.com/query/latest/docs/react/overview)
+- [TkDodo's Blog](https://tkdodo.eu/blog/practical-react-query)
