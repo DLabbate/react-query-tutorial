@@ -7,10 +7,10 @@ import {
   VStack,
   Button,
 } from "@chakra-ui/react";
-import { useTodosQuery } from "../hooks/useTodosQuery";
 import { CloseIcon } from "@chakra-ui/icons";
-import { useUpdateTodoOptimistic } from "../hooks/useUpdateTodoOptimistic";
+import { useTodosQuery } from "../hooks/useTodosQuery";
 import { useDeleteTodoOptimistic } from "../hooks/useDeleteTodoOptimistic";
+import { useUpdateTodoOptimistic } from "../hooks/useUpdateTodoOptimistic";
 
 const TodoList = () => {
   const { status, data } = useTodosQuery();

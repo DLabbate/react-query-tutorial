@@ -28,7 +28,7 @@ const InputForm = () => {
           colorScheme="brand"
           isLoading={createTodo.isLoading}
           onClick={() => {
-            if (input !== "") return;
+            if (input === "") return;
 
             createTodo.mutate(input, {
               // We can also pass additional callbacks to the mutation!
