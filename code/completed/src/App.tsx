@@ -1,25 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Flex } from "@chakra-ui/react";
+import InputForm from "./components/InputForm";
+import TodoList from "./components/TodoList";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Flex
+      height="100vh"
+      alignItems="center"
+      justifyContent="start"
+      direction="column"
+      paddingTop="16"
+      backgroundColor="brand.50"
+      overflowY="scroll"
+      paddingBottom="8"
+      gap="16"
+    >
+      <InputForm />
+      <TodoList />
+    </Flex>
   );
 }
 
