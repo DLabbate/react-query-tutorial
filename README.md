@@ -1,5 +1,7 @@
 # React Query Tutorial
 
+<img src="Thumbnail.png" width="750" />
+
 ## 👨‍🏫 Overview
 
 This tutorial will cover [React Query](https://tanstack.com/query/latest/docs/react/overview), a data fetching library you must try out!
