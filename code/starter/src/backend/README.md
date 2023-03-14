@@ -16,11 +16,18 @@ In particular, this folder implements a REST API using the following:
 ### Response Body
 
 ```json
-{
-  "id": "1234567",
-  "success": true,
-  "description": "Subscribe to Dom the Engineer!"
-}
+[
+  {
+    "id": "1",
+    "completed": true,
+    "description": "Subscribe to Dom the Engineer!"
+  },
+  {
+    "id": "2",
+    "completed": true,
+    "description": "Like the video!"
+  }
+]
 ```
 
 ## Create TODO
